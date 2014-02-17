@@ -1,31 +1,32 @@
 <?php
+  require_once 'lib\RankingDAO.php';
+?>
+
+<?php
 	$jogador = -1;
 	$fase = isset($_POST['fase']) ? $_POST['fase'] : '';
 	$tempo = isset($_POST['tempo']) ? $_POST['tempo'] : $_POST['tempo'];
 
-	$host = 'localhost';
-	$usuario = '';
-	$senha = '';
-	$dbName = '';
+	$status = 0;
 
-	$con = mysql_connect($host, $usuario, $senha);
-	if ($con === false) {
-		die(mysql_error());
-	}
-	$db = mysql_select_db($dbName, $con);
-	if ($db === false) {
-		mysql_close($con);
-		die(mysql_error());
-	}
+	if ($jogador <= 0) {
+		$status = 1;
 
-	$sql = 'INSERT INTO ranking (jogador, fase, tempo) VALUES ('.$jogador.', '.$fase.', '.$tempo.' )';
-	$rs = mysql_query($sql);
+	} else if ($fase == '') {
+		$status = 2;
+	} else if (!is_numeric($fase)) {
+		$status = 3;
 
-	if (mysql_error()) {
-		mysql_close($con);
-		die(mysql_error());
+	} else if ($tempo == '') {
+		$status = 4;
+	} else if (!is_numeric($tempo)) {
+		$status = 5;
 	}
 
-	mysql_close($con);
+	if ($status == 0) {
+		RankingDAO::save($jogador, $fase, $tempo);
+	}
 ?>
-0
+
+<?php echo $status; ?>
+
