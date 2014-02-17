@@ -1,3 +1,10 @@
+--
+-- Tabelas do jogo Memorize.
+--
+-- Autor: Cris Stanza (crisstanza@gmail.com)
+-- Data de criação: 15/Fev/2014
+--
+
 DROP TABLE IF EXISTS ranking;
 
 CREATE TABLE ranking (
