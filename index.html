@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Memorize</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/css.css"></style>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/jogo.js"></script>
+		<script type="text/javascript" src="js/js.js"></script>
+	</head>
+	<body>
+		<h3>Memorize</h3>
+		<br />
+		<div id="tela-inicial" class="Tela Show">
+			<h4>Memorize</h4>
+			<br />
+			<div id="tela-inicial-bt-jogar" class="Bt">Jogar!</div>
+			<br />
+			<div id="tela-inicial-bt-instrucoes" class="Bt">Instru&ccedil;&otilde;es</div>
+			<br />
+			<div id="tela-inicial-bt-ranking" class="Bt">Ranking</div>
+		</div>
+		<div id="tela-jogo" class="Tela Hide">
+			<div>Fase: <span id="display-fase">?</span></div>
+			<br />
+			<div id="display-clicks">
+				<div class="HandClick"></div>
+			</div>
+			<div id="display-fim-do-jogo" class="Hide">
+				<b>Fim do jogo!</b><br />
+				<br />
+				Voc&ecirc; errou a <span id="display-erros">?</span> <span id="display-erros-palavra-posicao">?</span>.<br />
+				Deseja <a href="#jogar" id="tela-jogo-bt-jogar-novamente">jogar novamente</a> ou <a href="#ultima-jogada" id="tela-jogo-bt-ultima-jogada">rever a sua &uacute;ltima jogada</a>?
+			</div>
+			<div id="display-voce-acertou" class="Hide">
+				Parab&eacute;ns, voc&ecirc; acertou! Pr&oacute;xima fase...
+			</div>
+			<br clear="all" />
+			<div id="main-board"></div>
+			<br />
+			<div>Tempo: <span id="display-tempo">?</span></div>
+		</div>
+		<div id="tela-instrucoes" class="Tela Hide">
+			<h4>Como Jogar</h4>
+			Memorize as casas numeradas na ordem em que elas aparecem.<br />
+			<br />
+			<div id="tela-instrucoes-bt-voltar" class="Bt">voltar</div>
+		</div>
+		<div id="tela-ranking" class="Tela Hide">
+			<h4>Ranking</h4>
+			<table id="ranking-table" border="1" cellpading="4" cellspacing="0">
+				<tr>
+					<th>Nome</th>
+					<th>Fase</th>
+					<th>Tempo</th>
+				</tr>
+				<tr>
+					<td>Lorem Ipsum</td>
+					<td>9</td>
+					<td>02:17</td>
+				</tr>
+				<tr>
+					<td>dolor</td>
+					<td>9</td>
+					<td>02:58</td>
+				</tr>
+				<tr>
+					<td>Sit Amet</td>
+					<td>7</td>
+					<td>01:13</td>
+				</tr>
+			</table>
+			<br />
+			<div id="tela-ranking-bt-voltar" class="Bt">voltar</div>
+		</div>
+	</body>
+</html>
+

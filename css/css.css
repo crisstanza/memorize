@@ -1,0 +1,91 @@
+a {
+	text-decoration: none;
+}
+
+h3, h4, div {
+	font-family: Arial, Verdana;
+}
+
+table#main-table {
+	border: 1px solid #d3ccc1;
+	margin: auto;
+}
+
+table#main-table td {
+	vertical-align: middle;
+	text-align: center;
+	font-size: 2.5em;
+	text-shadow: 3px 3px 4px #d3ccc1;
+	border: 1px solid transparent;
+	color: black;
+}
+
+td.Clicavel:hover {
+	border: 1px dotted #d3ccc1;
+}
+
+table#main-table td.ClickErrado {
+	color: red;
+}
+
+table#main-table td.ClickCerto {
+	color: blue;
+}
+
+.Show {
+	display: default;
+}
+.Hide {
+	display: none;
+}
+
+div.Bt, .Clicavel {
+	cursor: pointer;
+}
+
+div.Bt:hover {
+	text-decoration: underline;
+}
+
+.Clicavel:hover, a:hover {
+	text-decoration: underline;
+}
+
+div.Tela {
+	border: 1px solid #d3ccc1;
+	width: 480px;
+	min-height: 300px;
+	text-align: center;
+	padding: 10px;
+}
+
+div.HandClick {
+	float: left;
+	width: 50px;
+	height: 72px;
+	background-image: url(../img/hand-click.png);
+}
+div.ClickOn {
+	float: left;
+	width: 50px;
+	height: 72px;
+	background-image: url(../img/click-on.png);
+}
+div.ClickOff {
+	float: left;
+	width: 50px;
+	height: 72px;
+	background-image: url(../img/click-off.png);
+}
+
+#ranking-table {
+	border-collapse: collapse;
+}
+
+#ranking-table td, #ranking-table th {
+	padding: 4px;
+}
+
+#ranking-table td {
+	text-align: left;
+}
