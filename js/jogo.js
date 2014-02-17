@@ -10,6 +10,7 @@ function Jogo() {
 	//
 	this.timerStart = undefined;
 	this.timer = undefined;
+	this.lastTimerEnd = undefined;
 	this.timerEnd = undefined;
 	//
 	this.clicks = undefined;
@@ -186,9 +187,18 @@ Jogo.prototype.startTimer = function() {
 }
 
 Jogo.prototype.stopTimer = function() {
-	this.timerEnd = new Date();
+	this.timerEnd = this.lastTimerEnd;
 	clearInterval(this.timer);
 	this.timer = undefined;
+	//
+	var displayTempo = document.getElementById(Jogo.ID_DISPLAY_TEMPO);
+	if (this.timerEnd == undefined) {
+		displayTempo.innerHTML = Utils.formatHour(0);
+	} else {
+		var delta = this.timerEnd - this.timerStart;
+		var deltaInSeconds = delta / 1000;
+		displayTempo.innerHTML = Utils.formatHour(deltaInSeconds);
+	}
 }
 
 Jogo.prototype.incTimer = function() {
@@ -282,6 +292,7 @@ Jogo.prototype.mainFakeGameLoop = function() {
 }
 
 Jogo.prototype.voceAcertou = function() {
+	this.lastTimerEnd = new Date();
 	this.removeClickListeners();
 	//
 	var displayVoceAcertou = document.getElementById(Jogo.ID_DISPLAY_VOCE_ACERTOU);
