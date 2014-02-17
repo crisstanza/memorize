@@ -27,7 +27,10 @@
 			$con = RankingDAO::open();
 			$sql = 'SELECT id, jogador, fase, tempo, data FROM ranking WHERE jogador='.mysql_real_escape_string($jogador, $con);
 			$rs = mysql_query($sql, $con);
-			$list = 123;
+ 			$list = array();
+			while ($row = mysql_fetch_assoc($rs)) {
+				$list[] = $row;
+			}
 			RankingDAO::close($con);
 			return $list;
 	    }
