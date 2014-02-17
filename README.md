@@ -3,7 +3,6 @@ Memorize - exercício de memorização
 
 ## Configuração do Ambiente de Desenvolvimento Local (Ubuntu 12.04 LTS):
 
-
 ### Instalar:
 
     sudo apt-get install mysql-server apache2 libapache2-mod-php5 php5 php5-mysql phpmyadmin 
