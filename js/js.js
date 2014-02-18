@@ -42,6 +42,7 @@
 	function initTelaRanking() {
 		var btVoltar = document.getElementById('tela-ranking-bt-voltar');
 		btVoltar.addEventListener('click', goToTelaInicial, false);
+		jogo.refreshRanking();
 	}
 
 	function goToTelaInicial() {
@@ -63,6 +64,7 @@
 	function goToTelaRanking() {
 		hideTelas();
 		show('tela-ranking');
+		jogo.refreshRanking();
 	}
 
 	function hideTelas() {
