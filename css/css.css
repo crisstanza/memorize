@@ -1,13 +1,31 @@
+@import url(../fonts/Droid-Sans_400-700.css);
+
 body, html {
 	margin: 0;
 	padding: 0;
 }
+
+body {
+	border: 1px solid #d3ccc1;
+	width: 795px;
+	min-height: 590px;
+}
+
 a {
 	text-decoration: none;
 }
 
-h3, h4, div {
-	font-family: Arial, Verdana;
+h1, div, span, td {
+	font-family: 'Droid Sans', sans-serif;
+	color: #4c3360;
+}
+
+h1 {
+	font-size: 4em;
+	font-weight: bold;
+	text-shadow: 3px 3px 4px #d3ccc1;
+	color: #164F68;
+	padding: 25px;
 }
 
 table#main-table {
@@ -43,12 +61,42 @@ table#main-table td.ClickCerto {
 	display: none;
 }
 
+div.Bt {
+	text-shadow: 3px 3px 4px #d3ccc1;
+	font-size: 2em;
+	height: 70px;
+	margin: auto;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
 div.Bt, .Clicavel {
 	cursor: pointer;
 }
 
 div.Bt:hover {
-	text-decoration: underline;
+	color: gray;	
+}
+
+div.Bt#tela-inicial-bt-jogar {
+	background-image: url(../img/play.png);
+	background-position-y: 2px;
+	width: 170px;
+}
+
+div.Bt#tela-inicial-bt-jogar:hover {
+}
+
+div.Bt#tela-inicial-bt-instrucoes {
+	background-image: url(../img/instrucoes.png);
+	background-position-y: 2px;
+	width: 230px;
+}
+
+div.Bt#tela-inicial-bt-ranking {
+	background-image: url(../img/ranking.png);
+	background-position-y: 6px;
+	width: 195px;
 }
 
 .Clicavel:hover, a:hover {
@@ -56,11 +104,21 @@ div.Bt:hover {
 }
 
 div.Tela {
-	border: 1px solid #d3ccc1;
-	width: 795px;
-	min-height: 590px;
+	float: left;
 	text-align: center;
-	padding: 10px;
+	width: 590px;
+	/* border: 1px dotted #d3ccc1; */
+}
+
+div.SideBar {
+	float: left;
+	text-align: left;
+}
+
+div.SideBarBG {
+	background-color: #669999;
+	min-height: 487px;
+	width: 205px;
 }
 
 div.HandClick {
