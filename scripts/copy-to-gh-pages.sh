@@ -4,5 +4,5 @@ cp -Rf ../master/js/ .
 cp -Rf ../master/css/ .
 cp -Rf ../master/img/ .
 cp -Rf ../master/php/ .
-cp -f ../master/*.html .
+cp -f ../master/index.html ./index-iframe.html
 cd ../master
