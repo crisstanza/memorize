@@ -117,3 +117,20 @@ Utils.join = function(array, prefix, suffix, sep, lastSep) {
 	}
 	return buffer.join('');
 }
+
+Utils.ajax = function(url, callBack) {
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200) {
+				/* var contentType = ajax.getResponseHeader('content-type'); */
+				var json = eval('(' + ajax.response + ')');
+				callBack(json);
+			} else {
+				callBack(null, ajax.status, ajax.statusText);
+			}
+		}
+	};
+	ajax.open('GET', url, true);
+	ajax.send();
+}

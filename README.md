@@ -17,7 +17,7 @@ Memorize - exercício de memorização
 --
 #### Habilitar login sem senha:
 
-    sudo gedit config.default.php
+    sudo gedit /usr/share/phpmyadmin/libraries/config.default.php
     \# $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 --
@@ -35,6 +35,15 @@ Memorize - exercício de memorização
     </Directory>
 
     sudo /etc/init.d/apache2 restart
+
+--
+#### Configurar exibição de erros:
+
+    sudo gedit /etc/php5/apache2/php.ini &
+    \# error_reporting = E_ALL | E_STRICT
+    \# display_errors = On
+    \# display_startup_errors = On
+    \# track_errors = On
 
 --
 #### Links:
