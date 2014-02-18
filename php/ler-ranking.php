@@ -10,7 +10,7 @@
 	$count = count($list);
 	for ($i = 0 ; $i < $count; $i++ ) {
 		$element = $list[$i];
-		echo '{ id: '.$element['id'].', nome: "'.$element['nome'].'", fase: '.$element['fase'].', tempo: '.$element['tempo'].', data: "'.$element['data'].'" }';
+		echo json_encode($element);
 		if ($i < $count - 1) {
 			echo ', ';
 		}

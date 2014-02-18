@@ -19,7 +19,7 @@ function Jogo() {
 
 Jogo.instance = new Jogo();
 
-Jogo.LOG = false;
+Jogo.LOG = true;
 
 Jogo.log = function(msg) {
 	if(Jogo.LOG) {
@@ -28,6 +28,7 @@ Jogo.log = function(msg) {
 }
 
 Jogo.ID_MAIN_TABLE = 'main-table';
+Jogo.ID_RANKING_TABLE = 'ranking-table';
 Jogo.ID_MAIN_BOARD = 'main-board';
 Jogo.ID_DISPLAY_TEMPO = 'display-tempo';
 Jogo.ID_DISPLAY_FASE = 'display-fase';
@@ -198,7 +199,71 @@ Jogo.prototype.stopTimer = function() {
 		var delta = this.timerEnd - this.timerStart;
 		var deltaInSeconds = delta / 1000;
 		displayTempo.innerHTML = Utils.formatHour(deltaInSeconds);
+		this.sendRanking(deltaInSeconds);
 	}
+}
+
+Jogo.prototype.sendRanking = function(deltaInSeconds) {
+	Utils.ajax('./php/gravar-ranking.php?fase='+(this.fase + 1)+'&tempo='+deltaInSeconds, function(response, status, statusText) {
+		if (response == null) {
+			{
+				Jogo.log(status + ': ' + statusText);
+			}
+		} else {
+			var result = response;
+			{
+				Jogo.log('sendRanking: ' + result);
+			}
+		}
+	});
+}
+
+Jogo.prototype.readRanking = function(callBack) {
+	Utils.ajax('./php/ler-ranking.php', function(response, status, statusText) {
+		var result;
+		if (response == null) {
+			result = [];
+			{
+				Jogo.log(status + ': ' + statusText);
+			}
+		} else {
+			result = response.list;
+			{
+				Jogo.log('readRanking: ' + result.length);
+			}
+		}
+		callBack(result);
+	});
+}
+
+Jogo.prototype.refreshRanking = function() {
+	this.readRanking(this.showRanking);
+}
+
+Jogo.prototype.showRanking = function(rankings) {
+	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
+	var buffer = [];
+	var length = rankings.length;
+	if ( length > 0 ) {
+		buffer.push('<tr>');
+		buffer.push(	'<th>Nome</th>');
+		buffer.push(	'<th>Fase</th>');
+		buffer.push(	'<th>Tempo</th>');
+		buffer.push('</tr>');
+		for(var i = 0 ; i < length ; i++) {
+			var ranking = rankings[i];
+			buffer.push('<tr>');
+			buffer.push(	'<td>'+ranking.nome+'</td>');
+			buffer.push(	'<td>'+ranking.fase+'</td>');
+			buffer.push(	'<td>'+Utils.formatHour(ranking.tempo)+'</td>');
+			buffer.push('</tr>');
+		}
+	} else {
+		buffer.push('<tr>');
+		buffer.push(	'<td>Nenhum resultado no momento.</td>');
+		buffer.push('</tr>');
+	}
+	rankingTable.innerHTML = buffer.join('');
 }
 
 Jogo.prototype.incTimer = function() {
