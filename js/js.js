@@ -8,6 +8,7 @@
 		initTelaInstrucoes();
 		initTelaJogo();
 		initTelaRanking();
+		initSideBar();
 	}
 
 	function initTelaInicial() {
@@ -27,11 +28,6 @@
 	}
 
 	function initTelaJogo() {
-		var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
-		btJogarNovamente.addEventListener('click', goToTelaJogo, false);
-		//
-		var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
-		btUltimaJogada.addEventListener('click', function() { jogo.showUltimaJogada(); }, false);
 	}
 
 	function initTelaInstrucoes() {
@@ -43,6 +39,20 @@
 		var btVoltar = document.getElementById('tela-ranking-bt-voltar');
 		btVoltar.addEventListener('click', goToTelaInicial, false);
 		jogo.refreshRanking();
+	}
+
+	function initSideBar() {
+		var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
+		btJogarNovamente.addEventListener('click', goToTelaJogo, false);
+		//
+		var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
+		btUltimaJogada.addEventListener('click', function() { jogo.showUltimaJogada(); }, false);
+		//
+		var btJogar = document.getElementById('tela-inicial-bt-jogar');
+		btJogar.addEventListener('click', goToTelaJogo, false);
+		//
+		var btRanking = document.getElementById('side-bar-bt-ranking');
+		btRanking.addEventListener('click', goToTelaRanking, false);
 	}
 
 	function goToTelaInicial() {
@@ -64,6 +74,7 @@
 	function goToTelaRanking() {
 		hideTelas();
 		show('tela-ranking');
+		hide('tela-jogo-bt-ultima-jogada');
 		jogo.refreshRanking();
 	}
 
@@ -79,6 +90,11 @@
 	function show(id) {
 		var element = document.getElementById(id);
 		Utils.swapClass(element, 'Hide', 'Show');
+	}
+
+	function hide(id) {
+		var element = document.getElementById(id);
+		Utils.swapClass(element, 'Show', 'Hide');
 	}
 
 	window.addEventListener('load', init, false);
