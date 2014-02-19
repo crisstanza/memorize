@@ -1,8 +1,9 @@
 <?php
 	require_once './lib/RankingDAO.php';
+	require_once './joomla.php';
 
-	$jogador = -1;
-	$nome = '';
+	$jogador = $_jogador;
+	$nome = $_nome;
 	$fase = isset($_GET['fase']) ? $_GET['fase'] : '';
 	$tempo = isset($_GET['tempo']) ? $_GET['tempo'] : '';
 
