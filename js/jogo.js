@@ -40,11 +40,11 @@ Jogo.ID_DISPLAY_ERROS_PALAVRA_POSICAO = 'display-erros-palavra-posicao';
 
 Jogo.SHOW_SINGLE_GOAL_DURATION = 900;
 Jogo.SHOW_SINGLE_GOAL_LONG_DURATION = 1100;
-Jogo.SHOW_MESSAGES_DURATION = 650;
-Jogo.SHOW_LAST_MESSAGE_DURATION = 400;
+Jogo.SHOW_MESSAGES_DURATION = 900;
+Jogo.SHOW_LAST_MESSAGE_DURATION = 600;
 
-Jogo.DEFAULT_SIZE_DELTA = 2;
-Jogo.DEFAULT_GOAL_SIZE_DELTA = 3;
+Jogo.DEFAULT_SIZE_DELTA = 2; // 2
+Jogo.DEFAULT_GOAL_SIZE_DELTA = 3; // 3
 
 Jogo.prototype.init = function() {
 	this.setFase(1);
@@ -64,6 +64,15 @@ Jogo.prototype.showEnd = function() {
 	//
 	var displayFimDoJogo = document.getElementById(Jogo.ID_DISPLAY_FIM_DO_JOGO);
 	Utils.swapClass(displayFimDoJogo, 'Hide', 'Show');
+	//
+	var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
+	Utils.swapClass(btJogarNovamente, 'Hide', 'Show');
+	//
+	var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
+	Utils.swapClass(btUltimaJogada, 'Hide', 'Show');
+	//
+	var btRanking = document.getElementById('side-bar-bt-ranking');
+	Utils.swapClass(btRanking, 'Hide', 'Show');
 	//
 	var resultadoErrosArray = [];
 	var length = this.goal.length;
@@ -146,6 +155,15 @@ Jogo.prototype.setFase = function(fase) {
 	var displayVoceAcertou = document.getElementById(Jogo.ID_DISPLAY_VOCE_ACERTOU);
 	Utils.swapClass(displayVoceAcertou, 'Show', 'Hide');
 	//
+	var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
+	Utils.swapClass(btJogarNovamente, 'Show', 'Hide');
+	//
+	var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
+	Utils.swapClass(btUltimaJogada, 'Show', 'Hide');
+	//
+	var btRanking = document.getElementById('side-bar-bt-ranking');
+	Utils.swapClass(btRanking, 'Show', 'Hide');
+	//
 	var buffer = [];
 	buffer.push('<table id="'+Jogo.ID_MAIN_TABLE+'" cellspacing="'+this.space+'" cellpadding="0">');
 	for ( var i = 0 ; i < this.sizeX ; i++ ) {
@@ -183,6 +201,7 @@ Jogo.prototype.startTimer = function() {
 	var displayTempo = document.getElementById(Jogo.ID_DISPLAY_TEMPO);
 	displayTempo.innerHTML = '00:00';
 	this.timerStart = new Date().getTime();
+	this.lastTimerEnd = undefined;
 	var _this = this;
 	this.timer = setInterval(function() { _this.incTimer(); }, 1000);
 }

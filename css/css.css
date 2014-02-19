@@ -3,6 +3,7 @@
 body, html {
 	margin: 0;
 	padding: 0;
+	background-color: #fff;
 }
 
 body {
@@ -15,9 +16,17 @@ a {
 	text-decoration: none;
 }
 
-h1, div, span, td {
+h1, h2, div, span, td, a {
 	font-family: 'Droid Sans', sans-serif;
 	color: #4c3360;
+}
+
+p {
+	font-size: 2em;
+}
+
+p.P-Small {
+	font-size: 1.25em;
 }
 
 h1 {
@@ -25,7 +34,13 @@ h1 {
 	font-weight: bold;
 	text-shadow: 3px 3px 4px #d3ccc1;
 	color: #164F68;
-	padding: 25px;
+}
+
+h2 {
+	font-size: 2em;
+	font-weight: bold;
+	text-shadow: 3px 3px 4px #d3ccc1;
+	color: #164F68;
 }
 
 table#main-table {
@@ -99,15 +114,11 @@ div.Bt#tela-inicial-bt-ranking {
 	width: 195px;
 }
 
-.Clicavel:hover, a:hover {
-	text-decoration: underline;
-}
-
 div.Tela {
 	float: left;
 	text-align: center;
-	width: 590px;
-	/* border: 1px dotted #d3ccc1; */
+	width: 550px;
+	padding: 20px;
 }
 
 div.SideBar {
@@ -117,26 +128,21 @@ div.SideBar {
 
 div.SideBarBG {
 	background-color: #669999;
-	min-height: 487px;
-	width: 205px;
+	min-height: 413px;
+	padding: 64px 10px 10px 10px;
+	width: 185px;
 }
 
-div.HandClick {
-	float: left;
-	width: 50px;
-	height: 72px;
-	background-image: url(../img/hand-click.png);
-}
 div.ClickOn {
 	float: left;
-	width: 50px;
-	height: 72px;
+	width: 40px;
+	height: 40px;
 	background-image: url(../img/click-on.png);
 }
 div.ClickOff {
 	float: left;
-	width: 50px;
-	height: 72px;
+	width: 40px;
+	height: 40px;
 	background-image: url(../img/click-off.png);
 }
 
@@ -150,4 +156,8 @@ div.ClickOff {
 
 #ranking-table td {
 	text-align: left;
+}
+
+#main-board {
+	padding-top: 12px;
 }

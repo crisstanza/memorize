@@ -20,16 +20,13 @@
 			<div id="tela-inicial-bt-ranking" class="Bt">Ranking</div>
 		</div>
 		<div id="tela-jogo" class="Tela Hide">
-			<div>Fase: <span id="display-fase">?</span></div>
-			<br />
-			<div id="display-clicks">
-				<div class="HandClick"></div>
-			</div>
+			<h2>Fase: <span id="display-fase">?</span></h2>
+			<div id="display-clicks"></div>
 			<div id="display-fim-do-jogo" class="Hide">
-				<b>Fim do jogo!</b><br />
-				<br />
-				Voc&ecirc; errou a <span id="display-erros">?</span> <span id="display-erros-palavra-posicao">?</span>.<br />
-				Deseja <a href="#jogar" id="tela-jogo-bt-jogar-novamente">jogar novamente</a> ou <a href="#ultima-jogada" id="tela-jogo-bt-ultima-jogada">rever a sua &uacute;ltima jogada</a>?
+				<p><b>Fim do jogo!</b></p>
+				<p class="P-Small">
+					Voc&ecirc; errou a <span id="display-erros">?</span> <span id="display-erros-palavra-posicao">?</span>.
+				</p>
 			</div>
 			<div id="display-voce-acertou" class="Hide">
 				Parab&eacute;ns, voc&ecirc; acertou! Pr&oacute;xima fase...
@@ -40,13 +37,13 @@
 			<div>Tempo: <span id="display-tempo">?</span></div>
 		</div>
 		<div id="tela-instrucoes" class="Tela Hide">
-			<h4>Como Jogar</h4>
-			Memorize as casas numeradas na ordem em que elas aparecem.<br />
+			<h1>Como Jogar</h1>
+			<p>Memorize as casas numeradas na ordem em que elas aparecem.</p>
 			<br />
 			<div id="tela-instrucoes-bt-voltar" class="Bt">voltar</div>
 		</div>
 		<div id="tela-ranking" class="Tela Hide">
-			<h4>Ranking</h4>
+			<h1>Ranking</h1>
 			<table id="ranking-table" border="1" cellpading="4" cellspacing="0">
 				<tr>
 					<th>Nome</th>
@@ -60,7 +57,15 @@
 		<div class="SideBar">
 			<img src="./img/mente-proativa.png" width="196" height="99" />
 			<div class="SideBarBG">
-				
+				<p class="P-Small">
+					<a href="#jogar" class="Hide" id="tela-jogo-bt-jogar-novamente">Jogar de novo?</a>
+				</p>
+				<p class="P-Small">
+					<a href="#ultima-jogada" class="Hide" id="tela-jogo-bt-ultima-jogada">Rever a jogada?</a>
+				</p>
+				<p class="P-Small">
+					<a href="#ranking" class="Hide" id="side-bar-bt-ranking">Ranking</a>
+				</p>
 			<div>
 		</div>
 	</body>
