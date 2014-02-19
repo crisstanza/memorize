@@ -125,10 +125,12 @@ Jogo.prototype.showSingleGoal = function(array, oldClicavel1, oldClicavel2, i) {
 			} else {
 				Utils.addClass(clicavelElement, 'ClickErrado');
 				clicavelGoal = document.querySelector('table[id='+Jogo.ID_MAIN_TABLE+'] td[data-i="'+singleGoal.x+'"][data-j="'+singleGoal.y+'"]');
+				Utils.addClass(clicavelGoal, 'Flip');
 				clicavelGoal.innerHTML = i + 1;
 			}
 		}
 		i++;
+		Utils.addClass(clicavelElement, 'Flip');
 		clicavelElement.innerHTML = i;
 		var _this = this;
 		setTimeout(function() { _this.showSingleGoal(array, clicavelElement, clicavelGoal, i); }, array == this.goal ? Jogo.SHOW_SINGLE_GOAL_DURATION : Jogo.SHOW_SINGLE_GOAL_LONG_DURATION);

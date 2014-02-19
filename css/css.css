@@ -53,12 +53,16 @@ table#main-table td {
 	text-align: center;
 	font-size: 2.5em;
 	text-shadow: 3px 3px 4px #d3ccc1;
-	border: 1px solid transparent;
+	border: 2px solid transparent;
 	color: black;
 }
 
-td.Clicavel:hover {
-	border: 1px dotted #d3ccc1;
+table#main-table td.Clicavel:hover {
+	border: 2px dotted #d3ccc1;
+}
+
+table#main-table td.Clicavel:active {
+	border: 2px dotted red;
 }
 
 table#main-table td.ClickErrado {
