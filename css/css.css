@@ -153,7 +153,7 @@ div.ClickOff {
 	background-image: url(../img/replay.png);
 	height: 50px;
 	background-position-y: 3px;
-	padding: 5px 0px 5px 40px;
+	padding: 5px 0px 5px 37px;
 }
 
 #tela-jogo-bt-ultima-jogada {
@@ -162,7 +162,7 @@ div.ClickOff {
 	background-image: url(../img/review.png);
 	height: 50px;
 	background-position-y: 3px;
-	padding: 5px 0px 5px 40px;
+	padding: 5px 0px 5px 37px;
 }
 
 #side-bar-bt-ranking {
@@ -172,7 +172,7 @@ div.ClickOff {
 	height: 50px;
 	background-position-x: 2px;
 	background-position-y: 3px;
-	padding: 5px 0px 5px 40px;
+	padding: 5px 0px 5px 37px;
 }
 
 #ranking-table {
