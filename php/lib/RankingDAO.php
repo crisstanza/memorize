@@ -25,7 +25,10 @@
 
 		static public function findAll() {
 			$con = RankingDAO::open();
-			$sql = 'SELECT id, nome, jogador, fase, tempo, data FROM ranking ORDER BY fase DESC, tempo ASC LIMIT 0, 10';
+			$sql = ''.
+				'SELECT * FROM ('.
+				'	SELECT * FROM ranking r1 ORDER BY r1.jogador, r1.fase DESC, r1.tempo ASC'.
+				') AS r2 GROUP BY r2.jogador';
 			$rs = mysql_query($sql, $con);
 			if ($rs === false) {
 				die(mysql_error($con));
