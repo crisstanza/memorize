@@ -94,16 +94,13 @@ div.Bt, .Clicavel {
 }
 
 div.Bt:hover {
-	color: gray;	
+	color: gray;
 }
 
 div.Bt#tela-inicial-bt-jogar {
 	background-image: url(../img/play.png);
 	background-position-y: 2px;
 	width: 170px;
-}
-
-div.Bt#tela-inicial-bt-jogar:hover {
 }
 
 div.Bt#tela-inicial-bt-instrucoes {
@@ -150,6 +147,34 @@ div.ClickOff {
 	background-image: url(../img/click-off.png);
 }
 
+#tela-jogo-bt-jogar-novamente {
+	background-repeat: no-repeat;
+	background-position: left;
+	background-image: url(../img/replay.png);
+	height: 50px;
+	background-position-y: 3px;
+	padding: 5px 0px 5px 40px;
+}
+
+#tela-jogo-bt-ultima-jogada {
+	background-repeat: no-repeat;
+	background-position: left;
+	background-image: url(../img/review.png);
+	height: 50px;
+	background-position-y: 3px;
+	padding: 5px 0px 5px 40px;
+}
+
+#side-bar-bt-ranking {
+	background-repeat: no-repeat;
+	background-position: left;
+	background-image: url(../img/ranking.png);
+	height: 50px;
+	background-position-x: 2px;
+	background-position-y: 3px;
+	padding: 5px 0px 5px 40px;
+}
+
 #ranking-table {
 	border-collapse: collapse;
 }
@@ -164,4 +189,8 @@ div.ClickOff {
 
 #main-board {
 	padding-top: 12px;
+}
+
+.SideBar a:hover {
+	color: #5d447a;
 }
