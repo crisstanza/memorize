@@ -1,0 +1,19 @@
+Contato feito em: 20-Fev-2014 12:00
+-----------------------------------
+
+Olá!
+Favor encaminhar esta mensagem ao Wilson, referente ao site menteproativa.com.br
+
+Wilson, conversamos há algumas semanas sobre uma atualização no site do Beto Corazza, menteproativa.com.br
+Estamos com o jogo publicado e com tudo configurado aqui: http://menteproativa.com.br/jogos/memorize/
+É com você a criação de um novo artigo no Joomla? Precisamos de algo semelhante a:
+http://menteproativa.com.br/modulos/modulo1/10-semana-1-aula-1 Mas ao invés do video player, teremos
+um iframe com o jogo (ou o prório HTML do jogo); ao invés de "Semana 1 - Aula 1", será algo como "Jogos - Memorize", por exemplo.
+
+Fico no seu aguardo. Desde já, obrigado pela ajuda.
+
+Abraços!
+
+
+=================================================================================================================================
+

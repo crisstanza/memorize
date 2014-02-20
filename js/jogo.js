@@ -19,14 +19,6 @@ function Jogo() {
 
 Jogo.instance = new Jogo();
 
-Jogo.LOG = true;
-
-Jogo.log = function(msg) {
-	if(Jogo.LOG) {
-		console.log(msg);
-	}
-}
-
 Jogo.ID_MAIN_TABLE = 'main-table';
 Jogo.ID_RANKING_TABLE = 'ranking-table';
 Jogo.ID_MAIN_BOARD = 'main-board';
@@ -37,6 +29,7 @@ Jogo.ID_DISPLAY_FIM_DO_JOGO = 'display-fim-do-jogo';
 Jogo.ID_DISPLAY_VOCE_ACERTOU = 'display-voce-acertou';
 Jogo.ID_DISPLAY_ERROS = 'display-erros';
 Jogo.ID_DISPLAY_ERROS_PALAVRA_POSICAO = 'display-erros-palavra-posicao';
+Jogo.ID_SIDE_BAR_CONTENT = 'side-bar-content';
 
 Jogo.SHOW_SINGLE_GOAL_DURATION = 900;
 Jogo.SHOW_SINGLE_GOAL_LONG_DURATION = 1100;
@@ -65,14 +58,8 @@ Jogo.prototype.showEnd = function() {
 	var displayFimDoJogo = document.getElementById(Jogo.ID_DISPLAY_FIM_DO_JOGO);
 	Utils.swapClass(displayFimDoJogo, 'Hide', 'Show');
 	//
-	var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
+	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
 	Utils.swapClass(btJogarNovamente, 'Hide', 'Show');
-	//
-	var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
-	Utils.swapClass(btUltimaJogada, 'Hide', 'Show');
-	//
-	var btRanking = document.getElementById('side-bar-bt-ranking');
-	Utils.swapClass(btRanking, 'Hide', 'Show');
 	//
 	var resultadoErrosArray = [];
 	var length = this.goal.length;
@@ -157,14 +144,8 @@ Jogo.prototype.setFase = function(fase) {
 	var displayVoceAcertou = document.getElementById(Jogo.ID_DISPLAY_VOCE_ACERTOU);
 	Utils.swapClass(displayVoceAcertou, 'Show', 'Hide');
 	//
-	var btJogarNovamente = document.getElementById('tela-jogo-bt-jogar-novamente');
+	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
 	Utils.swapClass(btJogarNovamente, 'Show', 'Hide');
-	//
-	var btUltimaJogada = document.getElementById('tela-jogo-bt-ultima-jogada');
-	Utils.swapClass(btUltimaJogada, 'Show', 'Hide');
-	//
-	var btRanking = document.getElementById('side-bar-bt-ranking');
-	Utils.swapClass(btRanking, 'Show', 'Hide');
 	//
 	var buffer = [];
 	buffer.push('<table id="'+Jogo.ID_MAIN_TABLE+'" cellspacing="'+this.space+'" cellpadding="0">');
@@ -227,14 +208,10 @@ Jogo.prototype.stopTimer = function() {
 Jogo.prototype.sendRanking = function(deltaInSeconds) {
 	Utils.ajax('./php/gravar-ranking.php?fase='+(this.fase + 1)+'&tempo='+deltaInSeconds, function(response, status, statusText) {
 		if (response == null) {
-			{
-				Jogo.log(status + ': ' + statusText);
-			}
+			console.log(status + ': ' + statusText);
 		} else {
 			var result = response;
-			{
-				Jogo.log('sendRanking: ' + result);
-			}
+			console.log('sendRanking: ' + result);
 		}
 	});
 }
@@ -244,14 +221,10 @@ Jogo.prototype.readRanking = function(callBack) {
 		var result;
 		if (response == null) {
 			result = [];
-			{
-				Jogo.log(status + ': ' + statusText);
-			}
+			console.log(status + ': ' + statusText);
 		} else {
 			result = response.list;
-			{
-				Jogo.log('readRanking: ' + result.length);
-			}
+			console.log('readRanking: ' + result.length);
 		}
 		callBack(result);
 	});
