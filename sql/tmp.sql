@@ -4,5 +4,7 @@ SELECT nome, jogador, fase, tempo FROM ranking ORDER BY fase DESC, tempo ASC LIM
 
 SELECT * FROM (
 	SELECT * FROM ranking r1 ORDER BY r1.jogador, r1.fase DESC, r1.tempo ASC
-) AS r2 GROUP BY r2.jogador;
+) AS r2 GROUP BY r2.jogador LIMIT 0, 10;
+
+SELECT * FROM ranking r1 WHERE r1.jogador=1 ORDER BY r1.jogador, r1.fase DESC, r1.tempo ASC LIMIT 0, 10;
 
