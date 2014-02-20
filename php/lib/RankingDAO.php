@@ -1,10 +1,10 @@
 <?php
 	class RankingDAO {
 
-		static private $host = 'localhost';
-		static private $usuario = 'memorize';
-		static private $senha = 'memorize';
-		static private $dbName = 'memorize';
+		static private $host = 'mysql.menteproativa.com.br';
+		static private $usuario = 'menteproativa';
+		static private $senha = 'mentepro';
+		static private $dbName = 'menteproativa';
 
 		static private function open() {
 			$con = mysql_connect(RankingDAO::$host, RankingDAO::$usuario, RankingDAO::$senha);
