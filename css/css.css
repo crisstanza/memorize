@@ -9,7 +9,7 @@ body, html {
 body {
 	border: 1px solid #d3ccc1;
 	width: 795px;
-	min-height: 590px;
+	min-height: 695px;
 }
 
 a {
@@ -147,19 +147,19 @@ div.ClickOff {
 	background-image: url(../img/click-off.png);
 }
 
-#tela-jogo-bt-jogar-novamente {
+#side-bar-bt-jogar-novamente {
 	background-repeat: no-repeat;
 	background-position: left;
-	background-image: url(../img/replay.png);
+	background-image: url(../img/replay-small.png);
 	height: 50px;
 	background-position-y: 3px;
 	padding: 5px 0px 5px 37px;
 }
 
-#tela-jogo-bt-ultima-jogada {
+#side-bar-bt-ultima-jogada {
 	background-repeat: no-repeat;
 	background-position: left;
-	background-image: url(../img/review.png);
+	background-image: url(../img/review-small.png);
 	height: 50px;
 	background-position-y: 3px;
 	padding: 5px 0px 5px 37px;
@@ -168,7 +168,7 @@ div.ClickOff {
 #side-bar-bt-ranking {
 	background-repeat: no-repeat;
 	background-position: left;
-	background-image: url(../img/ranking.png);
+	background-image: url(../img/ranking-small.png);
 	height: 50px;
 	background-position-x: 2px;
 	background-position-y: 3px;
