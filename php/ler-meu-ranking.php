@@ -1,7 +1,10 @@
 <?php
 	require_once './lib/RankingDAO.php';
+	require_once './joomla.php';
 
-	$list = RankingDAO::findAll();
+	$jogador = $_jogador;
+
+	$list = RankingDAO::findAllByJogador($jogador);
 
 	echo '{ list: [ ';
 	$count = count($list);

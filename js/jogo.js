@@ -21,6 +21,7 @@ Jogo.instance = new Jogo();
 
 Jogo.ID_MAIN_TABLE = 'main-table';
 Jogo.ID_RANKING_TABLE = 'ranking-table';
+Jogo.ID_MEU_RANKING_TABLE = 'meu-ranking-table';
 Jogo.ID_MAIN_BOARD = 'main-board';
 Jogo.ID_DISPLAY_TEMPO = 'display-tempo';
 Jogo.ID_DISPLAY_FASE = 'display-fase';
@@ -216,8 +217,8 @@ Jogo.prototype.sendRanking = function(deltaInSeconds) {
 	});
 }
 
-Jogo.prototype.readRanking = function(callBack) {
-	Utils.ajax('./php/ler-ranking.php', function(response, status, statusText) {
+Jogo.prototype.readRanking = function(path, callBack) {
+	Utils.ajax(path, function(response, status, statusText) {
 		var result;
 		if (response == null) {
 			result = [];
@@ -231,11 +232,17 @@ Jogo.prototype.readRanking = function(callBack) {
 }
 
 Jogo.prototype.refreshRanking = function() {
-	this.readRanking(this.showRanking);
+	this.readRanking('./php/ler-ranking.php', this.showRanking);
+	this.readRanking('./php/ler-meu-ranking.php', this.showMeuRanking);
 }
 
 Jogo.prototype.showRanking = function(rankings) {
+	var meuRankingTable = document.getElementById(Jogo.ID_MEU_RANKING_TABLE);
+	Utils.swapClass(meuRankingTable, 'Show', 'Hide');
+	//
 	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
+	Utils.swapClass(rankingTable, 'Hide', 'Show');
+	//
 	var buffer = [];
 	var length = rankings.length;
 	if ( length > 0 ) {
@@ -250,6 +257,39 @@ Jogo.prototype.showRanking = function(rankings) {
 			buffer.push(	'<td>'+ranking.nome+'</td>');
 			buffer.push(	'<td>'+ranking.fase+'</td>');
 			buffer.push(	'<td>'+Utils.formatHour(ranking.tempo)+'</td>');
+			buffer.push('</tr>');
+		}
+	} else {
+		buffer.push('<tr>');
+		buffer.push(	'<td>Nenhum resultado no momento.</td>');
+		buffer.push('</tr>');
+	}
+	rankingTable.innerHTML = buffer.join('');
+}
+
+Jogo.prototype.showMeuRanking = function(rankings) {
+	var meuRankingTable = document.getElementById(Jogo.ID_MEU_RANKING_TABLE);
+	Utils.swapClass(meuRankingTable, 'Hide', 'Show');
+	//
+	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
+	Utils.swapClass(rankingTable, 'Show', 'Hide');
+	//
+	var buffer = [];
+	var length = rankings.length;
+	if ( length > 0 ) {
+		buffer.push('<tr>');
+		buffer.push(	'<th>Nome</th>');
+		buffer.push(	'<th>Fase</th>');
+		buffer.push(	'<th>Tempo</th>');
+		buffer.push(	'<th>Data</th>');
+		buffer.push('</tr>');
+		for(var i = 0 ; i < length ; i++) {
+			var ranking = rankings[i];
+			buffer.push('<tr>');
+			buffer.push(	'<td>'+ranking.nome+'</td>');
+			buffer.push(	'<td>'+ranking.fase+'</td>');
+			buffer.push(	'<td>'+Utils.formatHour(ranking.tempo)+'</td>');
+			buffer.push(	'<td>'+ranking.data+'</td>');
 			buffer.push('</tr>');
 		}
 	} else {

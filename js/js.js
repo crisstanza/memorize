@@ -31,9 +31,16 @@
 	}
 
 	function initTelaRanking() {
+		jogo.refreshRanking();
+		//
+		var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
+		btMeuRanking.addEventListener('click', jogo.showMeuRanking, false);
+		//
+		var btRanking = document.getElementById('tela-ranking-bt-ranking');
+		btRanking.addEventListener('click', jogo.showRanking, false);
+		//
 		var btVoltar = document.getElementById('tela-ranking-bt-voltar');
 		btVoltar.addEventListener('click', goToTelaInicial, false);
-		jogo.refreshRanking();
 	}
 
 	function initSideBar() {
