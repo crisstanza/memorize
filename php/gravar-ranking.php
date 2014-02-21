@@ -2,6 +2,9 @@
 	require_once './lib/RankingDAO.php';
 	require_once './joomla.php';
 
+	// $_jogador = 1;
+	// $_nome = 'Lorem Ispum';
+
 	$jogador = $_jogador;
 	$nome = $_nome;
 	$fase = isset($_GET['fase']) ? $_GET['fase'] : '';
