@@ -34,10 +34,10 @@
 		jogo.refreshRanking();
 		//
 		var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
-		btMeuRanking.addEventListener('click', jogo.showMeuRanking, false);
+		btMeuRanking.addEventListener('click', function() { jogo.refreshMeuRanking() }, false);
 		//
 		var btRanking = document.getElementById('tela-ranking-bt-ranking');
-		btRanking.addEventListener('click', jogo.showRanking, false);
+		btRanking.addEventListener('click', function() { jogo.refreshRanking() }, false);
 		//
 		var btVoltar = document.getElementById('tela-ranking-bt-voltar');
 		btVoltar.addEventListener('click', goToTelaInicial, false);
@@ -79,7 +79,7 @@
 	function goToTelaRanking() {
 		hideTelas();
 		show('tela-ranking');
-		jogo.refreshRanking();
+		jogo.refreshMeuRanking();
 	}
 
 	function hideTelas() {

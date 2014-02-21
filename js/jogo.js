@@ -60,7 +60,7 @@ Jogo.prototype.showEnd = function() {
 	Utils.swapClass(displayFimDoJogo, 'Hide', 'Show');
 	//
 	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
-	Utils.swapClass(btJogarNovamente, 'Hide', 'Show');
+	Utils.swapClass(sideBar, 'Hide', 'Show');
 	//
 	var resultadoErrosArray = [];
 	var length = this.goal.length;
@@ -83,7 +83,9 @@ Jogo.prototype.showEnd = function() {
 }
 
 Jogo.prototype.showUltimaJogada = function() {
-	this.showSingleGoal(this.clicks, null, null, 0);
+	if (this.goal != undefined) {
+		this.showSingleGoal(this.clicks, null, null, 0);
+	}
 }
 
 Jogo.prototype.showGoal = function() {
@@ -146,7 +148,7 @@ Jogo.prototype.setFase = function(fase) {
 	Utils.swapClass(displayVoceAcertou, 'Show', 'Hide');
 	//
 	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
-	Utils.swapClass(btJogarNovamente, 'Show', 'Hide');
+	Utils.swapClass(sideBar, 'Show', 'Hide');
 	//
 	var buffer = [];
 	buffer.push('<table id="'+Jogo.ID_MAIN_TABLE+'" cellspacing="'+this.space+'" cellpadding="0">');
@@ -231,9 +233,12 @@ Jogo.prototype.readRanking = function(path, callBack) {
 	});
 }
 
+Jogo.prototype.refreshMeuRanking = function() {
+	this.readRanking('./php/ler-meu-ranking.php', this.showMeuRanking);
+}
+
 Jogo.prototype.refreshRanking = function() {
 	this.readRanking('./php/ler-ranking.php', this.showRanking);
-	this.readRanking('./php/ler-meu-ranking.php', this.showMeuRanking);
 }
 
 Jogo.prototype.showRanking = function(rankings) {
@@ -243,6 +248,12 @@ Jogo.prototype.showRanking = function(rankings) {
 	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
 	Utils.swapClass(rankingTable, 'Hide', 'Show');
 	//
+	var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
+	Utils.addClass(btMeuRanking, 'Small');
+	//	
+	var btRanking = document.getElementById('tela-ranking-bt-ranking');
+	Utils.removeClass(btRanking, 'Small');
+	//	
 	var buffer = [];
 	var length = rankings.length;
 	if ( length > 0 ) {
@@ -274,6 +285,12 @@ Jogo.prototype.showMeuRanking = function(rankings) {
 	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
 	Utils.swapClass(rankingTable, 'Show', 'Hide');
 	//
+	var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
+	Utils.removeClass(btMeuRanking, 'Small');
+	//	
+	var btRanking = document.getElementById('tela-ranking-bt-ranking');
+	Utils.addClass(btRanking, 'Small');
+	//
 	var buffer = [];
 	var length = rankings.length;
 	if ( length > 0 ) {
@@ -297,7 +314,7 @@ Jogo.prototype.showMeuRanking = function(rankings) {
 		buffer.push(	'<td>Nenhum resultado no momento.</td>');
 		buffer.push('</tr>');
 	}
-	rankingTable.innerHTML = buffer.join('');
+	meuRankingTable.innerHTML = buffer.join('');
 }
 
 Jogo.prototype.incTimer = function() {
@@ -372,7 +389,7 @@ Jogo.prototype.mainClick = function(event) {
 	var i = element.getAttribute('data-i');
 	var j = element.getAttribute('data-j');
 	{
-		Jogo.log('click: ' + i + ", " + j);
+		// console.log('click: ' + i + ", " + j);
 	}
 	var _this = Jogo.instance;
 	_this.clicks.push({ x: i, y: j });

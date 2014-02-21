@@ -129,7 +129,7 @@ div.SideBar {
 
 div.SideBarBG {
 	background-color: #669999;
-	min-height: 413px;
+	min-height: 518px;
 	padding: 64px 10px 10px 10px;
 	width: 185px;
 }
@@ -152,8 +152,8 @@ div.ClickOff {
 	background-position: left;
 	background-image: url(../img/replay-small.png);
 	height: 50px;
-	background-position-y: 3px;
-	padding: 5px 0px 5px 37px;
+	background-position-y: 13px;
+	padding: 10px 0px 10px 30px;
 }
 
 #side-bar-bt-ultima-jogada {
@@ -161,8 +161,8 @@ div.ClickOff {
 	background-position: left;
 	background-image: url(../img/review-small.png);
 	height: 50px;
-	background-position-y: 3px;
-	padding: 5px 0px 5px 37px;
+	background-position-y: 10px;
+	padding: 10px 0px 10px 30px;
 }
 
 #side-bar-bt-ranking {
@@ -171,19 +171,19 @@ div.ClickOff {
 	background-image: url(../img/ranking-small.png);
 	height: 50px;
 	background-position-x: 2px;
-	background-position-y: 3px;
-	padding: 5px 0px 5px 37px;
+	background-position-y: 12px;
+	padding: 10px 0px 10px 30px;
 }
 
-#ranking-table {
+#ranking-table, #meu-ranking-table {
 	border-collapse: collapse;
 }
 
-#ranking-table td, #ranking-table th {
+#ranking-table td, #ranking-table th, #meu-ranking-table td, #meu-ranking-table th {
 	padding: 4px;
 }
 
-#ranking-table td {
+#ranking-table, #meu-ranking-table td {
 	text-align: left;
 }
 
@@ -191,6 +191,10 @@ div.ClickOff {
 	padding-top: 12px;
 }
 
-.SideBar a:hover {
+.SideBar a:hover, a.Small:hover {
 	color: #5d447a;
+}
+
+a.Small {
+	font-size: 0.6em;
 }

@@ -58,22 +58,6 @@
 			return $list;
 		}
 
-		static public function findAllByJogador($jogador) {
-			$con = RankingDAO::open();
-			$sql = 'SELECT * FROM ranking r1 WHERE r1.jogador='.mysql_real_escape_string($jogador, $con).' ORDER BY r1.jogador, r1.fase DESC, r1.tempo ASC LIMIT 0, 10';
-			$rs = mysql_query($sql, $con);
-			if ($rs === false) {
-				die(mysql_error($con));
-				RankingDAO::close($con);
-			}
- 			$list = array();
-			while ($row = mysql_fetch_assoc($rs)) {
-				$list[] = $row;
-			}
-			RankingDAO::close($con);
-			return $list;
-		}
-
 		static public function save($jogador, $nome, $fase, $tempo) {
 			$con = RankingDAO::open();
 			$sql = 'INSERT INTO ranking (jogador, nome, fase, tempo) VALUES ('.mysql_real_escape_string($jogador, $con).', "'.mysql_real_escape_string($nome, $con).'", '.mysql_real_escape_string($fase, $con).', '.mysql_real_escape_string($tempo, $con).')';
