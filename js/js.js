@@ -55,50 +55,31 @@
 	}
 
 	function goToTelaJogoShowUltimaJogada() {
-		hideTelas();
-		show('tela-jogo');
+		JogoUtils.hideTelas();
+		JogoUtils.show('tela-jogo');
 		jogo.showUltimaJogada();
 	}
 
 	function goToTelaInicial() {
-		hideTelas();
-		show('tela-inicial');
+		JogoUtils.hideTelas();
+		JogoUtils.show('tela-inicial');
 	}
 
 	function goToTelaInstrucoes() {
-		hideTelas();
-		show('tela-instrucoes');
+		JogoUtils.hideTelas();
+		JogoUtils.show('tela-instrucoes');
 	}
 
 	function goToTelaJogo() {
-		hideTelas();
-		show('tela-jogo');
+		JogoUtils.hideTelas();
+		JogoUtils.show('tela-jogo');
 		jogo.init();
 	}
 
 	function goToTelaRanking() {
-		hideTelas();
-		show('tela-ranking');
+		JogoUtils.hideTelas();
+		JogoUtils.show('tela-ranking');
 		jogo.refreshMeuRanking();
-	}
-
-	function hideTelas() {
-		var telas = document.querySelectorAll('div[id^=tela-]:not([class*=Bt])');
-		var length = telas.length;
-		for (var i = 0 ; i < length ; i++) {
-			var tela = telas[i];
-			Utils.swapClass(tela, 'Show', 'Hide');
-		}
-	}
-
-	function show(id) {
-		var element = document.getElementById(id);
-		Utils.swapClass(element, 'Hide', 'Show');
-	}
-
-	function hide(id) {
-		var element = document.getElementById(id);
-		Utils.swapClass(element, 'Show', 'Hide');
 	}
 
 	window.addEventListener('load', init, false);
