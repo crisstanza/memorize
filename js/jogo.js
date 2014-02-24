@@ -32,13 +32,16 @@ Jogo.ID_DISPLAY_ERROS = 'display-erros';
 Jogo.ID_DISPLAY_ERROS_PALAVRA_POSICAO = 'display-erros-palavra-posicao';
 Jogo.ID_SIDE_BAR_CONTENT = 'side-bar-content';
 
+Jogo.ID_TELA_RANKING_BT_MEU_RANKING = 'tela-ranking-bt-meu-ranking';
+Jogo.ID_TELA_RANKING_BT_RANKING = 'tela-ranking-bt-ranking';
+
 Jogo.SHOW_SINGLE_GOAL_DURATION = 1300;
 Jogo.SHOW_SINGLE_GOAL_LONG_DURATION = 1500;
 Jogo.SHOW_MESSAGES_DURATION = 900;
 Jogo.SHOW_LAST_MESSAGE_DURATION = 600;
 
-Jogo.DEFAULT_SIZE_DELTA = 2; // 2
-Jogo.DEFAULT_GOAL_SIZE_DELTA = 3; // 3
+Jogo.DEFAULT_SIZE_DELTA = 2;
+Jogo.DEFAULT_GOAL_SIZE_DELTA = 3;
 
 Jogo.prototype.init = function() {
 	this.setFase(1);
@@ -53,14 +56,9 @@ Jogo.prototype.end = function() {
 }
 
 Jogo.prototype.showEnd = function() {
-	var displayClicks = document.getElementById(Jogo.ID_DISPLAY_CLICKS);
-	Utils.swapClass(displayClicks, 'Show', 'Hide');
-	//
-	var displayFimDoJogo = document.getElementById(Jogo.ID_DISPLAY_FIM_DO_JOGO);
-	Utils.swapClass(displayFimDoJogo, 'Hide', 'Show');
-	//
-	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
-	Utils.swapClass(sideBar, 'Hide', 'Show');
+	JogoUtils.hide(Jogo.ID_DISPLAY_CLICKS);
+	JogoUtils.show(Jogo.ID_DISPLAY_FIM_DO_JOGO);
+	JogoUtils.show(Jogo.ID_SIDE_BAR_CONTENT);
 	//
 	var resultadoErrosArray = [];
 	var length = this.goal.length;
@@ -120,7 +118,6 @@ Jogo.prototype.showSingleGoal = function(array, oldClicavel1, oldClicavel2, i) {
 			}
 		}
 		i++;
-		Utils.addClass(clicavelElement, 'Flip');
 		clicavelElement.innerHTML = i;
 		var _this = this;
 		setTimeout(function() { _this.showSingleGoal(array, clicavelElement, clicavelGoal, i); }, array == this.goal ? Jogo.SHOW_SINGLE_GOAL_DURATION : Jogo.SHOW_SINGLE_GOAL_LONG_DURATION);
@@ -144,11 +141,8 @@ Jogo.prototype.setFase = function(fase) {
 	this.clicks = undefined;
 	this.goal = this.createGoal(this.fase);
 	//
-	var displayVoceAcertou = document.getElementById(Jogo.ID_DISPLAY_VOCE_ACERTOU);
-	Utils.swapClass(displayVoceAcertou, 'Show', 'Hide');
-	//
-	var sideBar = document.getElementById(Jogo.ID_SIDE_BAR_CONTENT);
-	Utils.swapClass(sideBar, 'Show', 'Hide');
+	JogoUtils.hide(Jogo.ID_DISPLAY_VOCE_ACERTOU);
+	JogoUtils.hide(Jogo.ID_SIDE_BAR_CONTENT);
 	//
 	var buffer = [];
 	buffer.push('<table id="'+Jogo.ID_MAIN_TABLE+'" cellspacing="'+this.space+'" cellpadding="0">');
@@ -176,7 +170,7 @@ Jogo.prototype.createGoal = function(fase) {
 	var goal = [];
 	while (goal.length < goalSize) {
 		var singleClick = { x: Utils.random(0, this.sizeX), y: Utils.random(0, this.sizeY) };
-		if (!Utils.containsSingleClick(goal, singleClick)) {
+		if (!JogoUtils.containsSingleClick(goal, singleClick)) {
 			goal.push(singleClick);
 		}
 	}
@@ -242,16 +236,13 @@ Jogo.prototype.refreshRanking = function() {
 }
 
 Jogo.prototype.showRanking = function(rankings) {
-	var meuRankingTable = document.getElementById(Jogo.ID_MEU_RANKING_TABLE);
-	Utils.swapClass(meuRankingTable, 'Show', 'Hide');
+	JogoUtils.hide(Jogo.ID_MEU_RANKING_TABLE);
+	JogoUtils.show(Jogo.ID_RANKING_TABLE);
 	//
-	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
-	Utils.swapClass(rankingTable, 'Hide', 'Show');
-	//
-	var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
+	var btMeuRanking = document.getElementById(Jogo.ID_TELA_RANKING_BT_MEU_RANKING);
 	Utils.addClass(btMeuRanking, 'Small');
 	//	
-	var btRanking = document.getElementById('tela-ranking-bt-ranking');
+	var btRanking = document.getElementById(Jogo.ID_TELA_RANKING_BT_RANKING);
 	Utils.removeClass(btRanking, 'Small');
 	//	
 	var buffer = [];
@@ -275,20 +266,18 @@ Jogo.prototype.showRanking = function(rankings) {
 		buffer.push(	'<td>Nenhum resultado no momento.</td>');
 		buffer.push('</tr>');
 	}
+	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
 	rankingTable.innerHTML = buffer.join('');
 }
 
 Jogo.prototype.showMeuRanking = function(rankings) {
-	var meuRankingTable = document.getElementById(Jogo.ID_MEU_RANKING_TABLE);
-	Utils.swapClass(meuRankingTable, 'Hide', 'Show');
+	JogoUtils.show(Jogo.ID_MEU_RANKING_TABLE);
+	JogoUtils.hide(Jogo.ID_RANKING_TABLE);
 	//
-	var rankingTable = document.getElementById(Jogo.ID_RANKING_TABLE);
-	Utils.swapClass(rankingTable, 'Show', 'Hide');
-	//
-	var btMeuRanking = document.getElementById('tela-ranking-bt-meu-ranking');
+	var btMeuRanking = document.getElementById(Jogo.ID_TELA_RANKING_BT_MEU_RANKING);
 	Utils.removeClass(btMeuRanking, 'Small');
 	//	
-	var btRanking = document.getElementById('tela-ranking-bt-ranking');
+	var btRanking = document.getElementById(Jogo.ID_TELA_RANKING_BT_RANKING);
 	Utils.addClass(btRanking, 'Small');
 	//
 	var buffer = [];
@@ -314,6 +303,7 @@ Jogo.prototype.showMeuRanking = function(rankings) {
 		buffer.push(	'<td>Nenhum resultado no momento.</td>');
 		buffer.push('</tr>');
 	}
+	var meuRankingTable = document.getElementById(Jogo.ID_MEU_RANKING_TABLE);
 	meuRankingTable.innerHTML = buffer.join('');
 }
 
@@ -340,10 +330,9 @@ Jogo.prototype.incClicks = function() {
 Jogo.prototype.showClicksOff = function() {
 	this.clearClicks();
 	var displayClicks = document.getElementById(Jogo.ID_DISPLAY_CLICKS);
-	Utils.swapClass(displayClicks, 'Hide', 'Show');
+	JogoUtils.show(Jogo.ID_DISPLAY_CLICKS);
 	//
-	var displayFimDoJogo = document.getElementById(Jogo.ID_DISPLAY_FIM_DO_JOGO);
-	Utils.swapClass(displayFimDoJogo, 'Show', 'Hide');
+	JogoUtils.hide(Jogo.ID_DISPLAY_FIM_DO_JOGO);
 	//
 	var length = this.goal.length;
 	for(var i = 0 ; i < length ; i++) {
@@ -399,7 +388,7 @@ Jogo.prototype.mainClick = function(event) {
 
 Jogo.prototype.mainFakeGameLoop = function() {
 	if ( this.clicks.length == this.goal.length ) {
-		if( Utils.equalsSingleClick(this.clicks, this.goal) ) {
+		if( JogoUtils.equalsSingleClick(this.clicks, this.goal) ) {
 			this.voceAcertou();
 		} else {
 			this.end();
@@ -411,11 +400,8 @@ Jogo.prototype.voceAcertou = function() {
 	this.lastTimerEnd = new Date();
 	this.removeClickListeners();
 	//
-	var displayVoceAcertou = document.getElementById(Jogo.ID_DISPLAY_VOCE_ACERTOU);
-	Utils.swapClass(displayVoceAcertou, 'Hide', 'Show');
-	//
-	var displayClicks = document.getElementById(Jogo.ID_DISPLAY_CLICKS);
-	Utils.swapClass(displayClicks, 'Show', 'Hide');
+	JogoUtils.show(Jogo.ID_DISPLAY_VOCE_ACERTOU);
+	JogoUtils.hide(Jogo.ID_DISPLAY_CLICKS);
 	//
 	var _this = this;
 	setTimeout(function() { _this.setFase(_this.fase + 1); }, Jogo.SHOW_MESSAGES_DURATION);
